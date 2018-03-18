@@ -1,0 +1,34 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}} 
+  </h1>
+</div>
+<label>Click to get the details of the Weather Forecasting</label>
+<button *ngIf="!Tempvar" (click)="ShowData();">Show Data</button>
+<button *ngIf="Tempvar" (click)="HideData();">Hide Data</button>
+<!-- <div *ngFor="let item of this.weatherData.list" >
+{{item.dt}}:{{this.weatherData.cnt}} : Nikhil's Weather
+</div> -->
+<h2  *ngIf="Tempvar">{{this.weatherData.city.name}}, {{this.weatherData.city.country}} <br>Latitude: {{this.weatherData.city.coord.lat}} <br> Longitude: {{this.weatherData.city.coord.lon}} <br> Population: {{this.weatherData.city.population}}</h2>
+<table *ngIf="Tempvar" border="1" >
+  <tr>
+    <th>DateTime</th>
+    <th>MinTemp</th>
+    <th>MaxTemp</th>
+    <th>AvgTemp</th>
+    <th>WindSpeed</th>
+    <th>Pressure</th>
+    <th>SeaLevel</th>
+  </tr>
+  <tr *ngFor="let i of this.weatherData.list" >
+    <td>{{i.dt_txt}}</td>
+    <td>{{i.main.temp_min}}</td>
+    <td>{{i.main.temp_max}}</td>
+    <td>{{i.main.temp}}</td>
+    <td>{{i.wind.speed}}</td>
+    <td>{{i.main.pressure}}</td>
+    <td>{{i.main.sea_level}}</td>
+  </tr>
+</table>
+
